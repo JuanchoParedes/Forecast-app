@@ -2,15 +2,15 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="100dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/cardview_default_radius"
     app:cardCornerRadius="20dp"
     app:cardElevation="@dimen/cardview_default_elevation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
         android:background="@color/pastel_blue"
         android:padding="12dp">
 
@@ -37,14 +37,16 @@
             android:id="@+id/tv_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:maxLines="2"
             android:textAlignment="center"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_weather_condition"
-            tools:text="Tuesday" />
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="Wednesday" />
 
         <TextView
             android:id="@+id/tv_weather_condition"
@@ -53,10 +55,12 @@
             android:maxLines="2"
             android:textAlignment="center"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_day"
+            app:layout_constraintEnd_toEndOf="@+id/tv_day"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_day"
             app:layout_constraintTop_toBottomOf="@+id/tv_temp"
-            tools:text="Sunny" />
+            tools:text="Partially rain possible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
