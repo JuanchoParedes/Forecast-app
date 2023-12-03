@@ -17,6 +17,7 @@ class PossibleLocationsAdapter(context: Context, resource: Int) :
     fun setData(list: List<String>?) {
         mlistData.clear()
         mlistData.addAll(list!!)
+        notifyDataSetChanged()
     }
 
     override fun getCount(): Int {
