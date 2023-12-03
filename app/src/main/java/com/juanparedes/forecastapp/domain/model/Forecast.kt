@@ -18,7 +18,7 @@ data class ForecastLocation(
 )
 
 data class CurrentWeather(
-    val temperatureInCelsius: Double,
+    val temperatureInCelsius: Int,
     val weatherCondition: WeatherCondition,
 )
 
@@ -29,12 +29,12 @@ data class WeatherCondition(
 )
 
 data class Day(
-    val averageDayTemperature: Double,
+    val averageDayTemperature: Int,
     val weatherCondition: WeatherCondition,
 )
 
 data class ForecastDay(
     val day: Day,
     val date: String,
-    val averageTemperatureInCelsius: Double = day.averageDayTemperature
+    val averageTemperatureInCelsius: Int = day.averageDayTemperature
 )
