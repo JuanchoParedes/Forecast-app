@@ -28,9 +28,10 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -39,6 +40,11 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
+    }
+
+    buildTypes.forEach {
+        it.buildConfigField("String", "API_KEY", "\"de5553176da64306b86153651221606\"")
     }
 }
 
@@ -49,10 +55,13 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("com.google.android.material:material:1.10.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("io.mockk:mockk:1.12.0")
 
     //RxJava
     implementation ("io.reactivex.rxjava3:rxandroid:3.0.2")
@@ -76,5 +85,8 @@ dependencies {
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
+    //SplashScreen
+    implementation ("androidx.core:core-splashscreen:1.0.0-beta02")
 
 }

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Forecast App</string>
+    <string name="empty_results">There are no results</string>
+    <string name="error_state">Something went wrong</string>
+    <string name="initial_state">Use the searchbar to fetch forecast</string>
+    <string name="search_bar_hint">Type your location</string>
+    <string name="name_and_country">%1$s, %2$s</string>
+    <string name="temperature_symbol">%1$s°</string>
+    <string name="image_prefix">https:%1$s</string>
 </resources>
