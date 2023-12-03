@@ -29,11 +29,12 @@ data class WeatherCondition(
 )
 
 data class Day(
-    val averageDayTemperature: Double
+    val averageDayTemperature: Double,
+    val weatherCondition: WeatherCondition,
 )
 
 data class ForecastDay(
     val day: Day,
-    val weatherCondition: WeatherCondition,
+    val date: String,
     val averageTemperatureInCelsius: Double = day.averageDayTemperature
 )

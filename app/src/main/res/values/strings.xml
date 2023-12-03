@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Forecast App</string>
+    <string name="empty_results">There are no results</string>
+    <string name="error_state">Something went wrong</string>
+    <string name="initial_state">Use the searchbar to fetch forecast</string>
 </resources>
