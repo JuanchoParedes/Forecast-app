@@ -4,6 +4,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -28,7 +29,11 @@ fun String.convertLocalTimeToPrettyFormat(): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd H:mm", Locale.getDefault())
 
     val calendar = Calendar.getInstance()
-    calendar.time = inputFormat.parse(this) ?: return EMPTY_STRING
+    try {
+        calendar.time = inputFormat.parse(this)
+    } catch (e: ParseException) {
+        return EMPTY_STRING
+    }
 
     val year = calendar.get(Calendar.YEAR)
     val month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
@@ -44,9 +49,13 @@ fun String.convertLocalTimeToPrettyFormat(): String {
 fun String.convertLocalTimeToPrettyFormatShort(): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
-    calendar.time = inputFormat.parse(this) ?: return EMPTY_STRING
+    try {
+        calendar.time = inputFormat.parse(this)
+    } catch (e: ParseException) {
+        return EMPTY_STRING
+    }
     val dayOfWeek =
         calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
 
-    return "$dayOfWeek"
+    return dayOfWeek
 }
