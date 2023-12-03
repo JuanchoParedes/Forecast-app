@@ -1,7 +1,7 @@
 package com.juanparedes.forecastapp.di
 
 import com.juanparedes.forecastapp.ForecastApplication
-import com.juanparedes.forecastapp.view.LocationsFragment
+import com.juanparedes.forecastapp.view.ForecastFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,5 +16,5 @@ interface ApplicationComponent {
 
     fun inject(application: ForecastApplication)
 
-
+    fun inject(fragment: ForecastFragment)
 }

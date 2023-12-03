@@ -35,10 +35,10 @@ fun ForecastLocationDto.mapToDomain(): ForecastLocation =
 fun WeatherConditionDto.mapToDomain() = WeatherCondition(text, icon, code)
 
 fun CurrentWeatherDto.mapToDomain() =
-    CurrentWeather(temperatureInCelsius, weatherCondition.mapToDomain())
+    CurrentWeather(temperatureInCelsius.toInt(), weatherCondition.mapToDomain())
 
 fun DayDto.mapToDomain() = Day(
-    averageDayTemperature,
+    averageDayTemperature.toInt(),
     weatherCondition.mapToDomain()
 )
 fun ForecastDayDto.mapToDomain() = ForecastDay(
