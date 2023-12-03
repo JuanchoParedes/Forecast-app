@@ -20,6 +20,7 @@ import com.juanparedes.forecastapp.domain.model.FetchForecastState
 import com.juanparedes.forecastapp.domain.model.Forecast
 import com.juanparedes.forecastapp.loadImage
 import com.juanparedes.forecastapp.view.adapter.ForecastDaysAdapter
+import com.juanparedes.forecastapp.view.adapter.PossibleLocationsAdapter
 import javax.inject.Inject
 
 class ForecastFragment : Fragment() {
@@ -29,7 +30,7 @@ class ForecastFragment : Fragment() {
     private val viewModel: ForecastViewModel by viewModels { factory }
 
     private lateinit var binding: FragmentForecastBinding
-    private lateinit var possibleLocationsAdapter: ArrayAdapter<String> //PossibleLocationsAdapter
+    private lateinit var possibleLocationsAdapter: PossibleLocationsAdapter
     private val forecastDaysAdapter: ForecastDaysAdapter = ForecastDaysAdapter()
 
     private val onLocationClickedListener = OnItemClickListener { parent, view, position, id ->
@@ -57,8 +58,10 @@ class ForecastFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentForecastBinding.inflate(inflater, container, false)
-        possibleLocationsAdapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line)
+        possibleLocationsAdapter = PossibleLocationsAdapter(
+            requireContext(),
+            android.R.layout.simple_dropdown_item_1line
+        )
 
         binding.rvDays.apply {
             adapter = forecastDaysAdapter
@@ -76,9 +79,7 @@ class ForecastFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.getPossibleLocationsLivedata().observe(viewLifecycleOwner) {
-            //possibleLocationsAdapter.setData(it.map { "${it.name}, ${it.country}" })
-            possibleLocationsAdapter.addAll(it.map { "${it.name}, ${it.country}" })
-            possibleLocationsAdapter.notifyDataSetChanged()
+            possibleLocationsAdapter.setData(it.map { "${it.name}, ${it.country}" })
         }
 
         viewModel.getForecastByLocation().observe(viewLifecycleOwner) {
