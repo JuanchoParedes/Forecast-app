@@ -84,4 +84,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
+    //SplashScreen
+    implementation ("androidx.core:core-splashscreen:1.0.0-beta02")
+
 }
